@@ -3,7 +3,7 @@
 @section('heading-level1')
     <a class="navbar-brand">{{__('book.heading.create')}}</a>
 @endsection
-aa
+
 @section('content')
     <form action="/books-info/store" method="post">
         {{ csrf_field() }}

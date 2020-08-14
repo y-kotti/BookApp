@@ -24,3 +24,9 @@ Route::get('books-info/edit/{id}', 'BooksController@editBookInfo');
 Route::post('books-info/update/{id}', 'BooksController@updateBookInfo');
 Route::get('books-info/{id}', 'BooksController@showDetailBookInfo');
 Route::post('books-info/delete/{id}', 'BooksController@deleteBookInfo');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/auth/login', 'Auth\LoginController@showLoginForm');
+Route::post('/auth/login', 'Auth\LoginController@login');

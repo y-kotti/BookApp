@@ -26,7 +26,7 @@ class RegistBookInfoPost extends FormRequest
         return [
             'title' => ['required'],
             'cost' => ['required', 'integer'],
-            'memo' => ['required', 'max:1000'],
+            'memo' => ['required', 'max:'. config('const.Books.MEMO_MAX_LENGTH')],
         ];
     }
 }

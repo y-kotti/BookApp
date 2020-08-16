@@ -10,9 +10,26 @@ use App\Model\Book;
 class BooksController extends Controller
 {
     // 一覧画面の表示
-    public function searchBooksInfo()
+    public function searchBooksInfo(Request $request)
     {
-        $books_info = DB::table('books')->paginate(5);
+        // 検索条件取得
+        $keyword = $request->input('keyword');
+
+        // テーブル指定
+        $books_info = DB::table('books');
+
+        // 検索時の処理
+        if (!empty($keyword)) {
+            // キーワード検索
+            $books_info = $books_info
+                ->where('id', $keyword)
+                ->orWhere('title', 'like', '%' . $keyword . '%')
+                ->orWhere('cost', 'like', '%' . $keyword . '%')
+                ->orWhere('memo', 'like', '%' . $keyword . '%');
+        }
+
+        // 5ページごとに表示
+        $books_info = $books_info->paginate(5);
         return view('books.index', ['books_info' => $books_info]);
     }
 

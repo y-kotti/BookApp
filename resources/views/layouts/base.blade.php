@@ -17,8 +17,9 @@
     <header>
         <nav class="navbar navbar-light bg-light">
             @yield('heading-level1')
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="{{ __('book.placeholder.search') }}"
+            <form method="/books-info" class="form-inline">
+                <input name="keyword" class="form-control mr-sm-2" type="search"
+                       placeholder="{{ __('book.placeholder.search') }}"
                        aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0"
                         type="submit">{{ __('book.btn.search') }}</button>

@@ -1,4 +1,4 @@
-@extends('errors.layouts.error')
+@extends('layouts.error')
 
 @section('content')
     <div class="jumbotron">

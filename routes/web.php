@@ -18,18 +18,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// 認証用
+// ログイン
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/auth/login', 'Auth\LoginController@showLoginForm');
 Route::post('/auth/login', 'Auth\LoginController@login');
 
-// 書籍アプリ用
-Route::get('books-info', 'BooksController@searchBooksInfo');
-Route::get('books-info/create', 'BooksController@createBookInfo');
-Route::post('books-info/store', 'BooksController@storeBookInfo');
-Route::get('books-info/edit/{id}', 'BooksController@editBookInfo');
-Route::post('books-info/update/{id}', 'BooksController@updateBookInfo');
-Route::get('books-info/{id}', 'BooksController@showDetailBookInfo');
-Route::post('books-info/delete/{id}', 'BooksController@deleteBookInfo');
+// 書籍用の認証が必要なAPI
+Route::group(["middleware"=>"auth"],function(){
+    Route::get('books-info','BooksController@searchBooksInfo');
+    Route::get('books-info/create', 'BooksController@createBookInfo');
+    Route::post('books-info/store', 'BooksController@storeBookInfo');
+    Route::get('books-info/edit/{id}', 'BooksController@editBookInfo');
+    Route::post('books-info/update/{id}', 'BooksController@updateBookInfo');
+    Route::get('books-info/{id}', 'BooksController@showDetailBookInfo');
+    Route::post('books-info/delete/{id}', 'BooksController@deleteBookInfo');
+});

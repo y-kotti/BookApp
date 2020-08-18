@@ -1,4 +1,5 @@
 @extends('layouts.base')
+@extends('books.modal.confirm')
 
 @section('heading-level1')
     <a class="navbar-brand">{{__('book.heading.create')}}</a>

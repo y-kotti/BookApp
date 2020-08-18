@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\RegistBookInfoPost;
 use Illuminate\Support\Facades\DB;
 use App\Model\Book;
+use Illuminate\Support\Facades\Auth;
 
 class BooksController extends Controller
 {
@@ -43,7 +44,10 @@ class BooksController extends Controller
     public function storeBookInfo(RegistBookInfoPost $request)
     {
         $book_info = new Book;
+        $user = Auth::user();
+
         $book_info->title = $request->input('title');
+        $book_info->user_id = $user->id;
         $book_info->cost = $request->input('cost');
         $book_info->memo = $request->input('memo');
         $book_info->save();

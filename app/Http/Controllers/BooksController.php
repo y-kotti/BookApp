@@ -30,7 +30,9 @@ class BooksController extends Controller
         }
 
         // 5ページごとに表示
-        $books_info = $books_info->paginate(10);
+        $books_info = $books_info
+            ->where('user_id', '=', Auth::user()->id)
+            ->paginate(10);
         return view('books.index', ['books_info' => $books_info]);
     }
 

@@ -12,7 +12,6 @@
             <th scope="col">{{__('book.tbl_heading.title')}}</th>
             <th scope="col">{{__('book.tbl_heading.cost')}}</th>
             <th scope="col">{{__('book.tbl_heading.memo')}}</th>
-            </th>
             <th scope="col">{{__('book.tbl_heading.detail')}}</th>
             <th scope="col">{{__('book.tbl_heading.delete')}}</th>
         </tr>

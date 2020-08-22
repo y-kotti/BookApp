@@ -62,5 +62,21 @@ return [
         'delete' => '削除',
         'search' => '検索',
         'csv' => 'CSVダウンロード',
+        'yes' => 'はい',
+        'no' => 'いいえ',
+    ],
+
+    // ダイアログ
+    'dialog' => [
+        'confirm' => [
+            'create' => '登録しますか？',
+            'update' => '更新しますか？',
+            'delete' => '削除しますか？',
+        ],
+        'complete' => [
+            'create' => '登録しました。',
+            'update' => '更新しました。',
+            'delete' => '削除しました。',
+        ]
     ],
 ];

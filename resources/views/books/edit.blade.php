@@ -42,7 +42,27 @@
             @endif
         </div>
         <div class="text-right">
-            <button type="submit" class="btn btn-primary">{{ __('book.btn.update') }}</button>
+            <button type="button" class="update-confirm btn btn-primary" data-toggle="modal"
+                    data-target="#confirm-update">{{ __('book.btn.update') }}</button>
+        </div>
+        <!-- 更新確認ダイアログ -->
+        <div class="modal fade" id="confirm-update" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        {{ __('book.dialog.confirm.update') }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light"
+                                data-dismiss="modal">{{ __('book.btn.no') }}</button>
+                        <form method="post" action="/books-info/update">
+                            @csrf
+                            <button type="submit" class="create-complete btn btn-primary"
+                                    data-toggle="modal" data-target="#complete-update">{{ __('book.btn.update') }}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </form>
     <div class="text-right">
@@ -51,3 +71,10 @@
         </form>
     </div>
 @endsection
+
+<script>
+    // 登録ダイアログの表示
+    $('.update-confirm').click(function () {
+        $('#updatebtn').val($(this).val());
+    });
+</script>

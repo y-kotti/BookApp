@@ -1,5 +1,4 @@
 @extends('layouts.base')
-@extends('books.modal.confirm')
 
 @section('heading-level1')
     <a class="navbar-brand">{{__('book.heading.create')}}</a>
@@ -35,7 +34,27 @@
             @endif
         </div>
         <div class="text-right">
-            <button type="submit" class="btn btn-primary">{{ __('book.btn.store') }}</button>
+            <button type="button" class="create-confirm btn btn-primary" data-toggle="modal"
+                    data-target="#confirm-create">{{ __('book.btn.store') }}</button>
+        </div>
+        <!-- 登録確認ダイアログ -->
+        <div class="modal fade" id="confirm-create" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        {{ __('book.dialog.confirm.create') }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light"
+                                data-dismiss="modal">{{ __('book.btn.no') }}</button>
+                        <form method="post" action="/books-info/store">
+                            @csrf
+                            <button type="submit" class="create-complete btn btn-primary"
+                                    data-toggle="modal" data-target="#complete-create">{{ __('book.btn.yes') }}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </form>
     <div class="text-right">
@@ -44,3 +63,10 @@
         </form>
     </div>
 @endsection
+
+<script>
+    // 登録ダイアログの表示
+    $('.create-confirm').click(function () {
+        $('#createbtn').val($(this).val());
+    });
+</script>

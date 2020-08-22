@@ -12,7 +12,6 @@
             <th scope="col">{{__('book.tbl_heading.cost')}}</th>
             <th scope="col">{{__('book.tbl_heading.memo')}}</th>
             <th scope="col">{{__('book.tbl_heading.detail')}}</th>
-            <th scope="col">{{__('book.tbl_heading.delete')}}</th>
         </tr>
         </thead>
         <tbody>
@@ -24,12 +23,6 @@
                 <td>
                     <form action="/books-info/{{$book_info->id}}">
                         <button type="submit" class="btn btn-secondary">{{ __('book.btn.detail') }}</button>
-                    </form>
-                </td>
-                <td>
-                    <form method="post" action="/books-info/delete/{{$book_info->id}}">
-                        @csrf
-                        <button type="submit" class="btn btn-danger">{{ __('book.btn.delete') }}</button>
                     </form>
                 </td>
             </tr>

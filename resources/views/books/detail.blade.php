@@ -17,11 +17,15 @@
         <label for="title">{{ __('book.list.memo') }}</label>
         <p>{{$book_info->memo}}</p>
     </div>
-    <form action="/books-info/edit/{{$book_info->id}}">
-        <button type="submit" class="btn btn-primary">{{ __('book.btn.edit') }}</button>
-    </form>
-    <button type="button" class="delete-confirm btn btn-danger" data-toggle="modal"
-            data-target="#confirm-delete">{{ __('book.btn.delete') }}</button>
+    <div class="text-right">
+        <form action="/books-info/edit/{{$book_info->id}}">
+            <button type="submit" class="btn btn-success">{{ __('book.btn.edit') }}</button>
+        </form>
+    </div>
+    <div class="text-right">
+        <button type="button" class="delete-confirm btn btn-danger" data-toggle="modal"
+                data-target="#confirm-delete">{{ __('book.btn.delete') }}</button>
+    </div>
     <!-- 削除確認ダイアログ -->
     <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog">
         <div class="modal-dialog">
@@ -42,7 +46,7 @@
         </div>
     </div>
     <form action="/books-info">
-        <button type="submit" class="btn btn-primary">{{ __('book.btn.index') }}</button>
+        <button type="submit" class="btn btn-secondary">{{ __('book.btn.return') }}</button>
     </form>
 @endsection
 

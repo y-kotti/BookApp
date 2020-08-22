@@ -31,7 +31,7 @@
     </table>
     <div class="text-right">
         <form action="/books-info/create">
-            <button type="submit" class="btn btn-primary">{{ __('book.btn.create') }}</button>
+            <button type="submit" class="btn btn-success">{{ __('book.btn.create') }}</button>
         </form>
     </div>
     <div class="mx-auto" style="width: 200px;">

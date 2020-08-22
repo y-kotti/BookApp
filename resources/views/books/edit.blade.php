@@ -42,7 +42,7 @@
             @endif
         </div>
         <div class="text-right">
-            <button type="button" class="update-confirm btn btn-primary" data-toggle="modal"
+            <button type="button" class="update-confirm btn btn-success" data-toggle="modal"
                     data-target="#confirm-update">{{ __('book.btn.update') }}</button>
         </div>
         <!-- 更新確認ダイアログ -->
@@ -53,21 +53,22 @@
                         {{ __('book.dialog.confirm.update') }}
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-light"
+                        <button type="button" class="btn btn-secondary"
                                 data-dismiss="modal">{{ __('book.btn.no') }}</button>
                         <form method="post" action="/books-info/update">
                             @csrf
-                            <button type="submit" class="create-complete btn btn-primary"
-                                    data-toggle="modal" data-target="#complete-update">{{ __('book.btn.update') }}</button>
+                            <button type="submit" class="create-complete btn btn-success"
+                                    data-toggle="modal"
+                                    data-target="#complete-update">{{ __('book.btn.yes') }}</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </form>
-    <div class="text-right">
-        <form action="/books-info">
-            <button type="submit" class="btn btn-primary">{{ __('book.btn.index') }}</button>
+    <div class="text-left">
+        <form action="/books-info/{{$book_info->id}}">
+            <button type="submit" class="btn btn-secondary">{{ __('book.btn.return') }}</button>
         </form>
     </div>
 @endsection

@@ -34,7 +34,7 @@
             @endif
         </div>
         <div class="text-right">
-            <button type="button" class="create-confirm btn btn-primary" data-toggle="modal"
+            <button type="button" class="create-confirm btn btn-success" data-toggle="modal"
                     data-target="#confirm-create">{{ __('book.btn.store') }}</button>
         </div>
         <!-- 登録確認ダイアログ -->
@@ -45,11 +45,11 @@
                         {{ __('book.dialog.confirm.create') }}
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-light"
+                        <button type="button" class="btn btn-secondary"
                                 data-dismiss="modal">{{ __('book.btn.no') }}</button>
                         <form method="post" action="/books-info/store">
                             @csrf
-                            <button type="submit" class="create-complete btn btn-primary"
+                            <button type="submit" class="create-complete btn btn-success"
                                     data-toggle="modal" data-target="#complete-create">{{ __('book.btn.yes') }}</button>
                         </form>
                     </div>
@@ -57,9 +57,9 @@
             </div>
         </div>
     </form>
-    <div class="text-right">
+    <div class="text-left">
         <form action="/books-info">
-            <button type="submit" class="btn btn-primary">{{ __('book.btn.index') }}</button>
+            <button type="submit" class="btn btn-secondary">{{ __('book.btn.return') }}</button>
         </form>
     </div>
 @endsection

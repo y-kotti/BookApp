@@ -80,4 +80,9 @@ return [
             'delete' => '削除しました。',
         ]
     ],
+
+    // フッター
+    'footer' => [
+        'copyright' => '©︎y-kotti',
+    ],
 ];

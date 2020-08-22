@@ -59,12 +59,7 @@
         @yield('content')
     </main>
     <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy;Company Name</p>
-        <ul class="list-inline">
-            <li class="list-inline-item"><a href="#">Privacy</a></li>
-            <li class="list-inline-item"><a href="#">Terms</a></li>
-            <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
+        <p class="mb-1">{{ __('book.footer.copyright') }}</p>
     </footer>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

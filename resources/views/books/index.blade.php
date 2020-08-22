@@ -8,7 +8,6 @@
     <table class="table">
         <thead class="thead-dark">
         <tr>
-            <th scope="col">{{__('book.tbl_heading.id')}}</th>
             <th scope="col">{{__('book.tbl_heading.title')}}</th>
             <th scope="col">{{__('book.tbl_heading.cost')}}</th>
             <th scope="col">{{__('book.tbl_heading.memo')}}</th>
@@ -19,7 +18,6 @@
         <tbody>
         @foreach ($books_info as $book_info)
             <tr>
-                <td>{{$book_info->id}}</td>
                 <td>{{$book_info->title}}</td>
                 <td>{{$book_info->cost}}</td>
                 <td>{{$book_info->memo}}</td>

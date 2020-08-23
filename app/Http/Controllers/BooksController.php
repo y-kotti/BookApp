@@ -19,19 +19,20 @@ class BooksController extends Controller
         // テーブル指定
         $books_info = DB::table('books');
 
-        // 検索時の処理
-        if (!empty($keyword)) {
-            // キーワード検索
-            $books_info = $books_info
-                ->where('title', 'like', '%' . $keyword . '%')
-                ->orWhere('cost', 'like', '%' . $keyword . '%')
-                ->orWhere('memo', 'like', '%' . $keyword . '%');
-        }
-
-        // 10ページごとに表示
+        // クエリ発行
         $books_info = $books_info
             ->where('user_id', '=', Auth::id())
+            ->when($keyword, function ($query, $keyword) {
+                return $query->orWhere('title', 'like', '%' . $keyword . '%');
+            })
+            ->when($keyword, function ($query, $keyword) {
+                return $query->orWhere('cost', 'like', '%' . $keyword . '%');
+            })
+            ->when($keyword, function ($query, $keyword) {
+                return $query->orWhere('memo', 'like', '%' . $keyword . '%');
+            })
             ->paginate(10);
+
         return view('books.index', ['books_info' => $books_info]);
     }
 

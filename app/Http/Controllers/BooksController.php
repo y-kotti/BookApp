@@ -23,15 +23,14 @@ class BooksController extends Controller
         if (!empty($keyword)) {
             // キーワード検索
             $books_info = $books_info
-                ->where('id', $keyword)
-                ->orWhere('title', 'like', '%' . $keyword . '%')
+                ->where('title', 'like', '%' . $keyword . '%')
                 ->orWhere('cost', 'like', '%' . $keyword . '%')
                 ->orWhere('memo', 'like', '%' . $keyword . '%');
         }
 
-        // 5ページごとに表示
+        // 10ページごとに表示
         $books_info = $books_info
-            ->where('user_id', '=', Auth::user()->id)
+            ->where('user_id', '=', Auth::id())
             ->paginate(10);
         return view('books.index', ['books_info' => $books_info]);
     }

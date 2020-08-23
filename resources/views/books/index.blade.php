@@ -5,6 +5,15 @@
 @endsection
 
 @section('content')
+    <div class="my-sm-2 float-sm-right">
+        <form method="/books-info" class="form-inline">
+            <input name="keyword" class="form-control mr-sm-2" type="search"
+                   placeholder="{{ __('book.placeholder.search') }}"
+                   aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0"
+                    type="submit">{{ __('book.btn.search') }}</button>
+        </form>
+    </div>
     <table class="table">
         <thead class="thead-dark">
         <tr>

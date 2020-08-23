@@ -15,13 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 // Welcomeページ
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 // ログイン
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/auth/login', 'Auth\LoginController@showLoginForm');
 Route::post('/auth/login', 'Auth\LoginController@login');
 

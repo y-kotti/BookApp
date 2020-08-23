@@ -5,17 +5,13 @@
 @endsection
 
 @section('content')
-    <div class="form-group">
-        <label for="title">{{ __('book.list.title') }}</label>
-        <p>{{$book_info->title}}</p>
-    </div>
-    <div class="form-group">
-        <label for="title">{{ __('book.list.cost') }}</label>
-        <p>{{$book_info->cost}}</p>
-    </div>
-    <div class="form-group">
-        <label for="title">{{ __('book.list.memo') }}</label>
-        <p>{{$book_info->memo}}</p>
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h5 class="border-bottom border-gray pb-2 mb-3">{{ __('book.list.title') }}</h5>
+        <p class="pb-2 mb-4">{{$book_info->title}}</p>
+        <h5 class="border-bottom border-gray pb-2 mb-3">{{ __('book.list.cost') }}</h5>
+        <p class="pb-2 mb-4">{{$book_info->cost}}</p>
+        <h5 class="border-bottom border-gray pb-2 mb-3">{{ __('book.list.memo') }}</h5>
+        <p class="pb-2 mb-4">{{$book_info->memo}}</p>
     </div>
     <div class="text-right">
         <form action="/books-info/edit/{{$book_info->id}}">

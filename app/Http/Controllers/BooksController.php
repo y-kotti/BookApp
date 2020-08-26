@@ -21,7 +21,7 @@ class BooksController extends Controller
         $keyword = $request->input('keyword');
         if (!empty($keyword)) {
             $books_info = $books_info
-                ->where(function($query) use ($keyword) {
+                ->where(function ($query) use ($keyword) {
                     return $query->where('title', 'like', '%' . $keyword . '%')
                         ->orWhere('cost', 'like', '%' . $keyword . '%')
                         ->orWhere('memo', 'like', '%' . $keyword . '%');
@@ -29,7 +29,7 @@ class BooksController extends Controller
         }
 
         // 10ページごとに表示する
-        $books_info =$books_info->paginate(10);
+        $books_info = $books_info->paginate(10);
 
         return view('books.index', ['books_info' => $books_info]);
     }
@@ -50,8 +50,11 @@ class BooksController extends Controller
         $book_info->user_id = $user->id;
         $book_info->cost = $request->input('cost');
         $book_info->memo = $request->input('memo');
-        $book_info->save();
-        return redirect('/books-info');
+
+        return DB::transaction(function () use ($book_info) {
+            $book_info->save();
+            return redirect('/books-info');
+        });
     }
 
     // 更新画面の表示
@@ -80,8 +83,11 @@ class BooksController extends Controller
         $book_info->title = $request->input('title');
         $book_info->cost = $request->input('cost');
         $book_info->memo = $request->input('memo');
-        $book_info->save();
-        return redirect("/books-info/" . $id);
+
+        return DB::transaction(function () use ($book_info, $id) {
+            $book_info->save();
+            return redirect("/books-info/" . $id);
+        });
     }
 
     // 詳細画面の表示
@@ -108,7 +114,10 @@ class BooksController extends Controller
         }
 
         $book_info = Book::find($id);
-        $book_info->delete();
-        return redirect('/books-info');
+
+        return DB::transaction(function () use ($book_info) {
+            $book_info->delete();
+            return redirect('/books-info');
+        });
     }
 }

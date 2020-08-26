@@ -13,25 +13,23 @@ class BooksController extends Controller
     // 一覧画面の表示
     public function searchBooksInfo(Request $request)
     {
+        // ユーザーごとに表示する情報を切り替える
+        $books_info = DB::table('books')
+            ->where('user_id', '=', Auth::id());
+
         // 検索条件取得
         $keyword = $request->input('keyword');
+        if (!empty($keyword)) {
+            $books_info = $books_info
+                ->where(function($query) use ($keyword) {
+                    return $query->where('title', 'like', '%' . $keyword . '%')
+                        ->orWhere('cost', 'like', '%' . $keyword . '%')
+                        ->orWhere('memo', 'like', '%' . $keyword . '%');
+                });
+        }
 
-        // テーブル指定
-        $books_info = DB::table('books');
-
-        // クエリ発行
-        $books_info = $books_info
-            ->where('user_id', '=', Auth::id())
-            ->when($keyword, function ($query, $keyword) {
-                return $query->orWhere('title', 'like', '%' . $keyword . '%');
-            })
-            ->when($keyword, function ($query, $keyword) {
-                return $query->orWhere('cost', 'like', '%' . $keyword . '%');
-            })
-            ->when($keyword, function ($query, $keyword) {
-                return $query->orWhere('memo', 'like', '%' . $keyword . '%');
-            })
-            ->paginate(10);
+        // 10ページごとに表示する
+        $books_info =$books_info->paginate(10);
 
         return view('books.index', ['books_info' => $books_info]);
     }

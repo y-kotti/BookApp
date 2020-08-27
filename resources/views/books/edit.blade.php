@@ -8,7 +8,9 @@
     <form action="/books-info/update/{{$book_info->id}}" method="post">
         {{ csrf_field() }}
         <div class="form-group">
-            <label for="title">{{ __('book.list.title') }}</label>
+            <label for="title">{{ __('book.list.title') }}
+                <span class="badge badge-danger">{{ __('book.list.required')  }}</span>
+            </label>
             <input type="text" name="title" class="form-control"
                    placeholder="{{ __('book.placeholder.title') }}"
                    @if(!empty(old('title')))
@@ -21,7 +23,9 @@
             @endif
         </div>
         <div class="form-group">
-            <label for="cost">{{ __('book.list.cost') }}</label>
+            <label for="cost">{{ __('book.list.cost') }}
+                <span class="badge badge-danger">{{ __('book.list.required')  }}</span>
+            </label>
             <input type="text" name="cost" class="form-control"
                    placeholder="{{ __('book.placeholder.cost') }}"
                    @if(!empty(old('cost')))
@@ -34,7 +38,9 @@
             @endif
         </div>
         <div class="form-group">
-            <label for="memo">{{ __('book.list.memo') }}</label>
+            <label for="memo">{{ __('book.list.memo') }}
+                <span class="badge badge-danger">{{ __('book.list.required')  }}</span>
+            </label>
             <textarea name="memo" rows="8" cols="80" class="form-control"
                       placeholder="{{ __('book.placeholder.memo') }}">@if(!empty(old('memo'))){{ old('memo') }}@else{{ $book_info->memo }}@endif</textarea>
             @if ($errors->has('memo'))

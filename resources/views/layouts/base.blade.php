@@ -31,6 +31,14 @@
                           style="display: none;">
                         @csrf
                     </form>
+                    <a class="dropdown-item" href="/manage"
+                       onclick="event.preventDefault(); document.getElementById('manage').submit();">
+                        {{ __('manage.list.manage') }}
+                    </a>
+                    <form id="manage" action="/manage" method="GET"
+                          style="display: none;">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </nav>

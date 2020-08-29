@@ -34,3 +34,10 @@ Route::group(["middleware"=>"auth"],function(){
     Route::get('books-info/{id}', 'BooksController@showDetailBookInfo');
     Route::post('books-info/delete/{id}', 'BooksController@deleteBookInfo');
 });
+
+// 管理ページ用API
+Route::group(["middleware"=>"auth"],function(){
+    Route::get('manage','ManageController@showManageInfo');
+    Route::get('manage/csv', 'ManageController@csvDownload');
+    Route::get('manage/user-info', 'ManageController@userInfoDownload');
+});

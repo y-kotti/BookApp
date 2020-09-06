@@ -44,6 +44,6 @@
         </form>
     </div>
     <div class="mx-auto" style="width: 200px;">
-        {{ $books_info->links() }}
+        {{ $books_info->appends(request()->input())->links() }}
     </div>
 @endsection
